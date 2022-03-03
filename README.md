@@ -1,4 +1,4 @@
-# vuejs-vagas-front
+# vagas-front
 
 ## Project setup
 ```
