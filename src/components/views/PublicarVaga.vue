@@ -85,23 +85,38 @@ export default {
     salario: "",
     modalidade: "",
     tipo: "",
+    publicacao: "",
   }),
   methods: {
     /* Método que pega os atributos, transforme em objetos e persiste no LocalStorage,
        através do click do botão "cadastrar". */
     salvarVaga() {
-      let vvaga = {
+      let tempoDecorrido = Date.now();
+      let dataAtual = new Date(tempoDecorrido);
+
+      /* Recuperando registro(s) do locaoStorage do navegador */
+      /* A string recuperada de localStorage está sendo submetida como
+         parâmetro para o método parse() do objeto JSON, convertendo uma string
+         válida, em objeto javascript (contrário do setItem())  */
+      let vaggas = JSON.parse(localStorage.getItem("vaggas"));
+      /* console.log(vaggas); */
+
+      if (!vaggas) vaggas = [];
+
+      vaggas.push({
         titulo: this.titulo,
         descricao: this.descricao,
         salario: this.salario,
         modalidade: this.modalidade,
         tipo: this.tipo,
-      };
+        publicacao: dataAtual.toISOString(), //data e hora no time zone UTC (tempo civil)
+      });
+
       /* localStorage: Método nativo do javascript */
       /* JSON: Converte o objeto "vvaga" em uma string,
          para armazenar o objeto como texto(objeto literal),
          no localStorage do navegador(chrome) */
-      localStorage.setItem('vagas', JSON.stringify(vvaga))
+      localStorage.setItem("vaggas", JSON.stringify(vaggas));
     },
   },
 };
