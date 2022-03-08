@@ -1,42 +1,80 @@
 {
-  "name": "vagas-front",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.15",
-    "@vue/cli-plugin-eslint": "~4.5.15",
-    "@vue/cli-service": "~4.5.15",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
+    "name": "vagas-front",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint"
     },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
+    "dependencies": { <<
+        <<
+        <<
+        <
+        HEAD "core-js": "^3.8.3",
+        "vue": "^3.2.13"
     },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "devDependencies": {
+        "@babel/core": "^7.12.16",
+        "@babel/eslint-parser": "^7.12.16",
+        "@vue/cli-plugin-babel": "~5.0.0",
+        "@vue/cli-plugin-eslint": "~5.0.0",
+        "@vue/cli-service": "~5.0.0",
+        "eslint": "^7.32.0",
+        "eslint-plugin-vue": "^8.0.3" ===
+            ===
+            =
+            "core-js": "^3.6.5",
+        "vue": "^3.0.0"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "~4.5.15",
+        "@vue/cli-plugin-eslint": "~4.5.15",
+        "@vue/cli-service": "~4.5.15",
+        "@vue/compiler-sfc": "^3.0.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^6.7.2",
+        "eslint-plugin-vue": "^7.0.0" >>>
+            >>>
+            >
+            da7bcf969b70321ba33e7e53d2cb11f6f6a54fb3
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/vue3-essential",
+            "eslint:recommended"
+        ],
+        "parserOptions": { <<
+            <<
+            <<
+            <
+            HEAD "parser": "@babel/eslint-parser" ===
+                ===
+                =
+                "parser": "babel-eslint" >>>
+                >>>
+                >
+                da7bcf969b70321ba33e7e53d2cb11f6f6a54fb3
+        },
+        "rules": {}
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions", <<
+        <<
+        <<
+        <
+        HEAD "not dead",
+        "not ie 11" ===
+        ===
+        =
+        "not dead" >>>
+        >>>
+        >
+        da7bcf969b70321ba33e7e53d2cb11f6f6a54fb3
+    ]
 }
