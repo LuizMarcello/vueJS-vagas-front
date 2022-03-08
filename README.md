@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # vuejs-bentley-front
+=======
+# vagas-front
+>>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
 
 ## Project setup
 ```

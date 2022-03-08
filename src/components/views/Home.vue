@@ -82,6 +82,7 @@ export default {
 
   data: () => ({
     usuariosOnLineee: 0,
+<<<<<<< HEAD
     vagasss: [
       /* Array com 5 objetos literais */
       {
@@ -130,6 +131,9 @@ export default {
         publicacao: "2021-10-05",
       },
     ],
+=======
+    vagasss: [],
+>>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
   }),
 
   methods: {
@@ -146,6 +150,18 @@ export default {
      "getUsuariosOnLine()" a cada 2 segundos */
     setInterval(this.getUsuariosOnLine, 2000); //a cada 2 segundos
   },
+<<<<<<< HEAD
+=======
+
+  /* mounted() { */ //Gancho(hook) executado quando o componente for "montado".
+  activated() {
+    //Gancho(hook) executado quando o componente for "ativado/reativado".
+    //Recuperando os registros do localStorage do navegador e usando
+    //o JSON.parse() para converter a string em objeto, compativel com
+    //o javaScript
+    this.vagasss = JSON.parse(localStorage.getItem("vaggas"));
+  },
+>>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
   /* Relacioandos a ativação/desativação dos componentes */
   /* Com a tag <keep-alive></keep-alive> */
   /*  
