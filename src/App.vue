@@ -9,13 +9,9 @@
     <!-- Aqui, o nome do seletor do componente
          pode ser em "kebab case", padrão igual
          das tags html -->
-<<<<<<< HEAD
-    <topo-padrao />
-=======
     <!-- Instância do componente filho "TopoPadrao.vue" -->
     <!-- Evento capturado do componente filho, usando a diretiva "v-on"(@) -->
     <topo-padrao @nomeDoEventoQueSeraCapturadoNoComponenetePai="acao($event)" />
->>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
     <conteudo v-if="visibilidade"></conteudo>
   </div>
 </template>
@@ -54,26 +50,16 @@ export default {
     desmontarComponente() {
       this.visibilidade = false;
     },
-<<<<<<< HEAD
-=======
     acao(event) {
       console.log(event.msg)
     }
->>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
   },
 };
 </script>
 
-<<<<<<< HEAD
-/* Define o estilo */
-/* Na hierarquia, o estilo visual definido no componente de nível
-   mais alto, é propagado para os componentes inferiores */
-<style scoped>
-=======
 
 <style scoped>
 /* Define o estilo */
 /* Na hierarquia, o estilo visual definido no componente de nível
    mais alto, é propagado para os componentes inferiores */
->>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
 </style>

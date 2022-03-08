@@ -6,13 +6,8 @@
     </div>
     <div class="card-footer">
       <small class="text-muted"
-<<<<<<< HEAD
-        >Salário: {{ salario }} | Modalidade: {{ modalidade }} | Tipo:
-        {{ tipo }} | Publicação: {{ publicacao }}</small
-=======
         >Salário: {{ salario }} | Modalidadeeeee: {{ getModalidade }} | Tipo:
         {{ getTipo }} | Publicação: {{ getPublicacao }}</small
->>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
       >
     </div>
   </div>
@@ -61,13 +56,8 @@ export default {
       /* required: true, */
       //default: 'O contratante não adicionou uma descrição para esta vaga.'
       default() {
-<<<<<<< HEAD
-        return '*'.repeat(30)
-      }
-=======
         return "*".repeat(30);
       },
->>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
     },
     salario: {
       type: [Number, String] /* Aqui aceita os dois tipos */,
@@ -86,8 +76,6 @@ export default {
       required: true,
     },
   },
-<<<<<<< HEAD
-=======
   computed: {
     getModalidade() {
       switch (this.modalidade) {
@@ -113,7 +101,6 @@ export default {
       return dataPublicacao.toLocaleDateString('pt-BR')
     },
   },
->>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
 
   /* Usando o ciclo de vida "created()" */
   /*

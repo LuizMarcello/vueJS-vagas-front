@@ -16,17 +16,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-<<<<<<< HEAD
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Publicar vaga</a>
-=======
             <a class="nav-link" href="#" @click="navegarPara()">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" @click="navegarPara()">Publicar vaga</a>
->>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
           </li>
         </ul>
       </div>
@@ -34,21 +27,6 @@
   </nav>
 </template>
 
-<<<<<<< HEAD
-
-/* Para codificar e exportar o objeto de configuração do vueJS,
-   para o componente */
-<script>
-export default {
-  name: "TopoPadrao",
-};
-</script>
-
-
-/* Define o estilo específico, somente para este componente */
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style></style>
-=======
 <script>
  /* Para codificar e exportar o objeto de configuração do vueJS, para o componente */
 export default {
@@ -75,4 +53,3 @@ export default {
 <style>
 /* Define o estilo específico, somente para este componente */
 </style>
->>>>>>> 888e74136e87ded9f33f980efc43aa9c51551853
