@@ -1,6 +1,29 @@
 <template>
   <div class="card">
-    <div class="card-header bg-dark text-white">{{ titulo }}</div>
+    <div class="card-header bg-dark text-white">
+      <div class="row">
+        <div class="col d-flex justify-content-between">
+          <div>
+            {{ titulo }}
+          </div>
+          <div>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                v-model="favoritada"
+              />
+              <label class="form-check-label"
+                >Favoritar</label
+              >
+              <!--  <button class="btn btn-danger" @click="dispararEventoComMitt()">
+                Teste
+              </button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="card-body">
       <p>{{ descricao }}</p>
     </div>
@@ -21,6 +44,21 @@
 /* Exportando o seletor */
 export default {
   name: "Vagaaa",
+  data: () => ({
+    favoritada: false,
+  }),
+  /* "Assistindo" a alterações feitas no atributo "favoritada" acima. */
+  watch: {
+    favoritada(valorNovo) {
+      if (valorNovo) {
+        /* Mitt: Configurado globalmente em main.js*/
+        this.emitter.emit("favoritarVaga", this.titulo);
+      } else {
+        /* Mitt: Configurado globalmente em main.js*/
+        this.emitter.emit("desfavoritarVaga", this.titulo);
+      }
+    },
+  },
   /* Aqui os nomes das props aqui são recebidas em "camelCase(descricaoVaga)" */
   /* kebab-case na parte de templates e camelCase na parte de scripts */
   /* Aqui associando um "array" ao props: */
@@ -96,10 +134,20 @@ export default {
       return "";
     },
     getPublicacao() {
-      let dataPublicacao = new Date(this.publicacao)
+      let dataPublicacao = new Date(this.publicacao);
       //return dataPublicacao.toLocaleString('pt-BR')
-      return dataPublicacao.toLocaleDateString('pt-BR')
+      return dataPublicacao.toLocaleDateString("pt-BR");
     },
+  },
+  methods: {
+    /*  dispararEventoComMitt() { */
+    //Acessando a propriedade global definida em main.js,
+    //que contém a instância da dependência mitt
+    //Emitindo então um evento por meio do "emitter"
+    //Barramento de evento global, que pode ser capturado
+    //em qualquer componente
+    /*  this.emitter.emit("eventoGlobal1", "Teste Captura Evento Parâmetro");
+    }, */
   },
 
   /* Usando o ciclo de vida "created()" */

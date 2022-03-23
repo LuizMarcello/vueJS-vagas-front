@@ -1,18 +1,25 @@
 /* Parte visual do componente. Elementos html */
 <template>
   <div>
-    <h1>Componente App</h1>
-    <button @click="desmontarComponente()">
+    <!-- <h1>Componente App</h1> -->
+
+    <!-- <button @click="desmontarComponente()">
       Desmontar o componente Conteudo
-    </button>
+    </button> -->
     <!-- Seletor de componentes do template -->
     <!-- Aqui, o nome do seletor do componente
          pode ser em "kebab case", padrão igual
          das tags html -->
     <!-- Instância do componente filho "TopoPadrao.vue" -->
     <!-- Evento capturado do componente filho, usando a diretiva "v-on"(@) -->
-    <topo-padrao @nomeDoEventoQueSeraCapturadoNoComponenetePai="acao($event)" />
-    <conteudo v-if="visibilidade"></conteudo>
+    <!-- recebido como objeto: -->
+    <!-- <topo-padrao @eventoQueSeraCapturadoNoComponenetePai="acao($event)" /> -->
+    <!-- Recebido como função de callback: -->
+    <!-- <topo-padrao @eventoQueSeraCapturadoNoComponenetePai="$event('Texto 14', 129)" /> -->
+    <!-- Instanciando os componentes -->
+    <vagas-favoritas></vagas-favoritas>
+    <topo-padrao @navegar="componente = $event" />
+    <conteudo v-if="visibilidade" :conteeeudo="componente"></conteudo>
   </div>
 </template>
 
@@ -26,6 +33,7 @@
 /* Também em "Pascal case" */
 /* O alias "@" indica sempre o "src" do projeto, para importar */
 import Conteudo from "@/components/layouts/Conteudo.vue";
+import VagasFavoritas from "@/components/comuns/VagasFavoritas.vue";
 import TopoPadrao from "@/components/layouts/TopoPadrao.vue";
 
 /* Definindo estes componentes no objeto de configuração
@@ -36,6 +44,7 @@ export default {
   /* Propriedades reativas */
   data: () => ({
     visibilidade: true,
+    componente: "Home",
   }),
 
   components: {
@@ -44,16 +53,23 @@ export default {
        em "PascalCase" */
     Conteudo,
     TopoPadrao,
+    VagasFavoritas,
   },
 
-  methods: {
+  /*  methods: {
     desmontarComponente() {
       this.visibilidade = false;
     },
-    acao(event) {
-      console.log(event.msg)
-    }
-  },
+    acao(p1, p2) {
+      console.log(
+        "Função de callback definida no componente Pai e chamada no componente Filho"
+      );
+      console.log("p1: ", p1);
+      console.log("p2: ", p2); */
+  /* ou */
+  //console.log(event);
+  /*  }, */
+  /*  }, */
 };
 </script>
 

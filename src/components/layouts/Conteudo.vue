@@ -1,14 +1,14 @@
 /* Parte visual do componente. Elementos html */
 <template>
   <div>
-    <h1>{{ tituuulo }}</h1>
-    <button @click="atualizarComponente()">Atualizar</button>
+    <!-- <h1>{{ tituuulo }}</h1> -->
+    <!-- <button @click="atualizarComponente()">Atualizar</button> -->
     <!-- Para renderizar de modo dinâmico os componentes "home" e "publicar-vaga" -->
     <!-- Um de cada vêz -->
     <!-- Os atributos da instância estão recebendo os seletores de cada componente,
          alternadamente -->
-    <button @click="conteuuudo = 'home'">Home</button>
-    <button @click="conteuuudo = 'publicar-vaga'">Publicar vaga</button>
+    <!--  <button @click="conteuuudo = 'home'">Home</button> -->
+    <!--  <button @click="conteuuudo = 'publicar-vaga'">Publicar vaga</button> -->
     <!-- Usando a síntaxe "kebab case" -->
     <!-- Utilizando os componentes "home" e "publicar vaga" aqui no template,
          de acôrdo com seus seletores -->
@@ -19,8 +19,9 @@
          ser renderizados, conforme o valor do atributo "conteuuudo" -->
     <!-- Tag que apenas ativa/desativa o componente. Não monta/desmonta.
          Preserva a sua instância em "cache". Mantém eles "vivos"  -->
+    <!-- {{ conteeeudo }} -->
     <keep-alive>
-      <component :is="conteuuudo" />
+      <component :is="conteeeudo" />
     </keep-alive>
   </div>
 </template>
@@ -36,6 +37,12 @@ import PublicarVaga from "@/components/views/PublicarVaga.vue";
 
 export default {
   name: "Conteudo",
+  props: {
+    conteeeudo: {
+      type: String,
+      required: true,
+    },
+  },
 
   /* Indicando, por meio da propriedade "componentes",
      quais serão os "seletores" dos componentes */
@@ -45,18 +52,18 @@ export default {
   },
 
   /* Propriedades reativas */
-  data: () => ({
+  /* data: () => ({ */
     /* Atributos da instância */
-    tessste: "Neste ponto o componente já foi criado",
+  /*   tessste: "Neste ponto o componente já foi criado",
     tituuulo: "Componente conteúdooo",
-    conteuuudo: "home",
+    conteeeudo: "home",
   }),
-
-  methods: {
+ */
+  /* methods: {
     atualizarComponente() {
       this.titulo += "*";
     },
-  },
+  }, */
 
   /* Métodos (hooks/ganchos) do ciclo de vida do componente */
   /* beforeCreate() {

@@ -18,12 +18,14 @@
           <li class="nav-item">
             <!-- Diretiva v-on(@)evento de click, quando clicar em "home" -->
             <!--  <a class="nav-link" href="#" @click="navegarPara()">Home</a> -->
-            <a class="nav-link" href="#" @click="navegarPara('Home')">Home</a>
+            <a class="nav-link" href="#" @click="funcaoCallback('Teste 1', 200)"
+              >Home</a
+            >
           </li>
           <li class="nav-item">
             <!-- Diretiva v-on(@)evento de click, quando clicar em "Publicar vaga" -->
             <!-- <a class="nav-link" href="#" @click="navegarPara()">Publicar vaga</a -->
-            <a class="nav-link" href="#" @click="navegarPara('PublicarVaga')"
+            <a class="nav-link" href="#" @click="funcaoCallback('Teste 2', 300)"
               >Publicar vaga</a
             >
           </li>
@@ -36,17 +38,35 @@
 <script>
 /* Para codificar e exportar o objeto de configuração do vueJS, para o componente */
 export default {
+  props: {
+    funcaoCallback: Function,
+  },
   name: "TopoPadrao",
-  methods: {
-    navegarPara(p) {
-      /* $emit(): Método que permite emitir um evento para o componente pai */
-      /* Como 1º parâmetro: nome do evento que será capturado no componenete pai */
-      /* Como 2º parâmetro(Opcional): payload, string, objeto, array, função de call-back */
-      this.$emit("navegar", p);
+  /* methods: {
+    navegarPara() { */
+  //console.log('Chegamos até aqui')
+  /* $emit(): Método que permite emitir um evento para o componente pai */
+  /* Como 1º parâmetro: nome do evento que será capturado no componenete pai */
+  /* Como 2º parâmetro(Opcional): payload, string, objeto, array, função de call-back */
+  /*  this.$emit(
+        "eventoQueSeraCapturadoNoComponenetePai", */
+  //'Dando um oi para o componente PAI, usando string' /* Enviando uma string */
+  //{ msg: "Dando um oi para o componente PAI, usando objeto" } /* Enviando um objeto */
+  /* Usando uma "arrow function" */
+  /* (p1, p2) => {
+          console.log(
+            "Função de callback emitida pelo componente filho" */
+  /*   );  Enviando uma função de calback */
+  /*  console.log("P1: ", p1);
+          console.log("P2: ", p2); */
+};
+/*  );
     },
   },
-};
+}; */
 </script>
+
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
