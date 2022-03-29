@@ -19,9 +19,19 @@
     <!-- Instanciando os componentes -->
     <!-- exibirAlerta começa em "false", então componente Alerta.vue
     não será exibido inicialmente-->
+    <!-- Aqui são as instâncias dos componentes filhos -->
     <vagas-favoritas></vagas-favoritas>
     <topo-padrao @navegar="componente = $event" />
-    <alerta v-if="exibirAlerta" />
+    <alerta v-if="exibirAlerta">
+      <!-- Aqui, o conteúdo html que não estiver dentro de templates, 
+      aparecerão no slot "padrão" do componente filho-->
+      <!-- Tag templates com a diretiva v-slot, são para slots nomeados no componente filho -->
+      <!-- Conectando este template ao slot de mesmo nome no componente filho -->
+      <template v-slot:titulo>
+        <h5>Título do alerta</h5>
+      </template>
+      <p>Descrição do alerta</p>
+    </alerta>
     <conteudo v-if="visibilidade" :conteeeudo="componente"></conteudo>
   </div>
 </template>
