@@ -22,26 +22,29 @@
     <!-- Aqui são as instâncias dos componentes filhos -->
     <vagas-favoritas></vagas-favoritas>
     <topo-padrao @navegar="componente = $event" />
-    <alerta v-if="exibirAlerta">
+
+    <alerta v-if="exibirAlerta" :tipooo="alerta.tipo">
       <!-- Aqui, o conteúdo html que não estiver dentro de templates, 
       aparecerão no slot "padrão" do componente filho-->
       <!-- Tag templates com a diretiva v-slot, são para slots nomeados no componente filho -->
       <!-- Conectando este template ao slot de mesmo nome no componente filho -->
       <template v-slot:titulo>
-        <h5>Título do alerta</h5>
+        <h5>{{ alerta.titulo }}</h5>
       </template>
-      <p>Descrição do alerta</p>
+      <p>{{ alerta.descricao }}</p>
     </alerta>
+
     <conteudo v-if="visibilidade" :conteeeudo="componente"></conteudo>
   </div>
 </template>
 
+
+<script>
+/* Aqui é a "instância" deste componente */
 /* Existem o "nome do script do componente", o "nome do
    componente" e o "nome do seletor do componente" */
-
 /* Para codificar e exportar o objeto de configuração do vueJS,
    para o componente */
-<script>
 /* Importando os componentes */
 /* Também em "Pascal case" */
 /* O alias "@" indica sempre o "src" do projeto, para importar */
@@ -59,7 +62,8 @@ export default {
   data: () => ({
     visibilidade: true,
     componente: "Home",
-    exibirAlerta: false
+    exibirAlerta: false,
+    alerta: { titulo: '', descricao: '', tipo: '' }
   }),
 
   components: {
@@ -73,14 +77,18 @@ export default {
   },
   /* Ciclo de vida, quando o componente for montado */
   mounted() {
-    /* Ficará na escuta, na espera deste alerta, de algum componente,
+    /* Ficará na escuta, na espera de alertas, de algum componente,
        no caso, do componente "Alerta.vue", daí executará essa
        função de callBack */
-    this.emitter.on('alerta', () => {
+    this.emitter.on('alerta', (a) => {
+      /* Por este parâmetro, estamos recebendo os atributos
+         tipo, titulo e descricao, de PublicarVaga.vue */
+      this.alerta = a
+
       this.exibirAlerta = true
       /* A mensagem de alerta aparecerá somente por 4 segundos */
       setTimeout(() => this.exibirAlerta = false, 4000)
-      console.log('Apresentar a mensagem de alerta customizada')
+
     })
   }
 

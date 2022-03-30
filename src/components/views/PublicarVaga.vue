@@ -106,16 +106,35 @@ export default {
         publicacao: dataAtual.toISOString(), //data e hora no time zone UTC (tempo civil)
       });
 
-      /* localStorage: Método nativo do javascript */
-      /* JSON: Converte o objeto "vvaga" em uma string,
-         para armazenar o objeto como texto(objeto literal),
-         no localStorage do navegador(chrome) */
-      //localStorage.setItem("vaggas", JSON.stringify(vaggas));
 
-      /* Emitindo o alerta, para ser escutado pelo componente App.vue: */
-      this.emitter.emit('alerta')
+      if (this.validaFormulario()) {
+        /* localStorage: Método nativo do javascript */
+        /* JSON: Converte o objeto "vvaga" em uma string,
+           para armazenar o objeto como texto(objeto literal),
+           no localStorage do navegador(chrome) */
+        localStorage.setItem("vaggas", JSON.stringify(vaggas));
 
-      this.resetaFormularioCadastroVaga()
+        /* Emitindo o alerta, para ser escutado pelo componente App.vue: */
+        /* 2º parâmetro, um objeto */
+        this.emitter.emit('alerta', {
+          tipo: 'sucesso',
+          titulo: `A vaga ${this.titulo} foi cadastrada com sucesso!`,
+          descricao: 'Parabéns, a vaga foi cadastrada e poderá ser consultada em nossa plataforma.'
+        })
+
+        this.resetaFormularioCadastroVaga()
+
+      } else {
+        /* Emitindo o alerta, para ser escutado pelo componente App.vue: */
+        /* 2º parâmetro, um objeto */
+        this.emitter.emit('alerta', {
+          tipo: 'erro',
+          titulo: `-_- Opsss... Não foi possível realizar o cadastro`,
+          descricao: 'Algum campo não foi preenchido corretamente. Tente novamente'
+        })
+      }
+
+
     },
     resetaFormularioCadastroVaga() {
       this.titulo = ''
@@ -124,6 +143,17 @@ export default {
       this.modalidade = ''
       this.tipo = ''
     },
+    validaFormulario() {
+      /* validando o formulário */
+      let valido = true
+      /* Verificando se todos os campos do formulário são diferentes de vazio */
+      if (this.titulo === '') valido = false
+      if (this.descricao === '') valido = false
+      if (this.salario === '') valido = false
+      if (this.modalidade === '') valido = false
+      if (this.tipo === '') valido = false
+      return valido
+    }
   },
 
 };

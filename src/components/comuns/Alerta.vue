@@ -1,5 +1,5 @@
 <template>
-  <div class="alert alert-success" role="alert">
+  <div :class="estiloAlerta" role="alert">
     <!-- Slot nomeado -->
     <slot name="titulo">
       <!-- Valores padrões só funcionam, se o componente pai
@@ -20,7 +20,18 @@
 
 <script>
 export default {
-  name: 'Alerta'
+  name: 'Alerta',
+  props: { tipooo: String },
+  /* Propriedades computadas */
+  computed: {
+    estiloAlerta() {
+      switch (this.tipooo) {
+        case 'erro': return 'alert alert-danger'
+        case 'sucesso': return 'alert alert-success'
+        default: return 'alert alert-success'
+      }
+    }
+  }
 }
 </script>
 
