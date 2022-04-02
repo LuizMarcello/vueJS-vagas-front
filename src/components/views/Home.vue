@@ -108,9 +108,20 @@ export default {
     /* Escutando o evento personalizado "filtrarVagas"
        do componente PesquisarVaga.vue */
     /* Função de callback */
-    this.emitter.on('filtrarVagas', vaga => {
-      const vagas = JSON.parse(localStorage.getItem("vaggas"));
-      console.log(vagas)
+    this.emitter.on('filtrarVagas', vagaa => {
+      /* Recuperando os registros do localStorage do navegador e usando
+    o JSON.parse() para converter a string em objeto, compativel com
+    o javaScript */
+      const vaggas = JSON.parse(localStorage.getItem("vaggas"));
+
+      /* Método filter() nativo do javascript
+      que trabalha sobre arrays.
+      true ou false: este método cria um novo array com todos
+      os elementos que passaram no teste implementado na função */
+      /* O método includes() determina se um array/objeto contém
+      um determinado elemento ou não, retornando true ou false,
+      respectivamente */
+      this.vagasss = vaggas.filter(reg => reg.titulo.toLowerCase().includes(vagaa.titulo.toLowerCase()))
     })
   }
 
