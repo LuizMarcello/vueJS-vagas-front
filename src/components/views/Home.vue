@@ -21,7 +21,7 @@
         <!-- kebab-case na parte de templates e camelCase na parte de scripts -->
         <!-- Ao invés de passarmos via props, cada atributo e seus valores separadamente
              (Ex: :titulo-vaga-teste="vagga.titulo"), passamos "todo o objeto" de uma só
-              vêz, usando a diretiva v-bind  -->
+        vêz, usando a diretiva v-bind-->
         <vagaa v-bind="vagga" />
       </div>
     </div>
@@ -29,15 +29,10 @@
     <!-- Usando 3 instâncias separadas do mesmo componente -->
     <!-- Definindo as propriedades nas 3 instâncias do mesmo componente filho -->
     <!-- Propriedades(props) serão enviadas deste componente "pai" ao componente 
-         "filho". Se manterão reativas. -->
+    "filho". Se manterão reativas.-->
     <div class="row mt-5">
       <div class="col-4">
-        <indicadorr
-          tituloo="Vagas abertas"
-          indicadorr="100"
-          bgg="bg-dark"
-          colorr="text-white"
-        ></indicadorr>
+        <indicadorr tituloo="Vagas abertas" indicadorr="100" bgg="bg-dark" colorr="text-white"></indicadorr>
       </div>
 
       <div class="col-4">
@@ -100,14 +95,25 @@ export default {
     setInterval(this.getUsuariosOnLine, 2000); //a cada 2 segundos
   },
 
-  /* mounted() { */ //Gancho(hook) executado quando o componente for "montado".
+  /* activated() Gancho(hook) executado quando o componente for "ativado/reativado". */
   activated() {
-    //Gancho(hook) executado quando o componente for "ativado/reativado".
-    //Recuperando os registros do localStorage do navegador e usando
-    //o JSON.parse() para converter a string em objeto, compativel com
-    //o javaScript
+    /* Recuperando os registros do localStorage do navegador e usando
+    o JSON.parse() para converter a string em objeto, compativel com
+    o javaScript */
     this.vagasss = JSON.parse(localStorage.getItem("vaggas"));
   },
+
+  /* mounted() Gancho(hook) executado quando o componente for "montado". */
+  mounted() {
+    /* Escutando o evento personalizado "filtrarVagas"
+       do componente PesquisarVaga.vue */
+    /* Função de callback */
+    this.emitter.on('filtrarVagas', vaga => {
+      const vagas = JSON.parse(localStorage.getItem("vaggas"));
+      console.log(vagas)
+    })
+  }
+
   /* Relacioandos a ativação/desativação dos componentes */
   /* Com a tag <keep-alive></keep-alive> */
   /*  
