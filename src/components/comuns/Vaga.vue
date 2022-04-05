@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" style="color:red">
     <div class="card-header bg-dark text-white">
       <div class="row">
         <div class="col d-flex justify-content-between">

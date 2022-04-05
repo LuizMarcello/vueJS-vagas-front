@@ -1,4 +1,4 @@
-vagas: [
+[
   {
     titulo: 'Analista Programador PHP Pleno',
     descricao: 'Profissional com conhecimentos em PHP, Laravel e MySQL. Necessário 3 anos de experiências. Atuará na manutenção de sistemas legados da empresa.',
