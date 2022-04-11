@@ -1,4 +1,4 @@
-/* Parte visual do componente. Elementos html */
+<!-- Parte visual do componente. Elementos html  -->
 <template>
   <div class="container py-4">
     <div class="row">
@@ -13,18 +13,32 @@
     <!-- camelCase:(descricaoVagaTeste) -->
     <!-- PascalCase(DescricaoVagaTeste) -->
 
-    <div class="row mt-5" v-for="(vagga, index) in vagasss" :key="index">
-      <div class="col">
-        <!--  {{ vagga }} -->
-        <!-- Serão encaminhados via "props", ao componente filho -->
-        <!-- Os nomes ds props aqui são enviadas em "kebab-case(descricao-vaga-teste)" -->
-        <!-- kebab-case na parte de templates e camelCase na parte de scripts -->
-        <!-- Ao invés de passarmos via props, cada atributo e seus valores separadamente
-             (Ex: :titulo-vaga-teste="vagga.titulo"), passamos "todo o objeto" de uma só
-        vêz, usando a diretiva v-bind-->
-        <vagaa v-bind="vagga" />
+    <!-- Os nomes ds props aqui são enviadas em "kebab-case(descricao-vaga-teste)" -->
+    <!-- kebab-case na parte de templates e camelCase na parte de scripts -->
+
+    <!-- Instanciando o componente filho ListaVagas.vue -->
+    <!-- <h2>Template customizado (slots com escopo definido)</h2>
+    <lista-vagas v-slot:default="slotProps">
+      <div v-for="(vvaga, index) in slotProps.vagahs" :key="index">
+        <h5>{{ vvaga.titulo }}</h5>
+        <p>{{ vvaga.descricao }}</p>
+        <hr />
       </div>
-    </div>
+    </lista-vagas> -->
+
+    <!--   <br />
+    <br />
+    <h2>Template padrão</h2> -->
+
+    <lista-vagas>
+      <!--
+      <template v-slot:titulo="slotProps">{{ slotProps.dadosTitulo.titulo }} <hr> </template>
+
+      <template v-slot:default="slotProps">{{ slotProps.vagahs }} <hr> </template>
+
+      <template v-slot:rodape="slotProps">{{ slotProps.dadosRodape.titulo }} </template>
+      -->
+    </lista-vagas>
 
     <!-- Usando 3 instâncias separadas do mesmo componente -->
     <!-- Definindo as propriedades nas 3 instâncias do mesmo componente filho -->
@@ -32,7 +46,12 @@
     "filho". Se manterão reativas.-->
     <div class="row mt-5">
       <div class="col-4">
-        <indicadorr tituloo="Vagas abertas" indicadorr="100" bgg="bg-dark" colorr="text-white"></indicadorr>
+        <indicadorr
+          tituloo="Vagas abertas"
+          indicadorr="100"
+          bgg="bg-dark"
+          colorr="text-white"
+        ></indicadorr>
       </div>
 
       <div class="col-4">
@@ -57,14 +76,13 @@
   </div>
 </template>
 
-
-/* Para codificar e exportar o objeto de configuração do vueJS,
-   para o componente. Atributos da instância do vueJS */
 <script>
+/* Para codificar e exportar o objeto de configuração do vueJS, para o componente.
+   Atributos da instância do vueJS */
 /* Importando o componente para este componente "Home.vue" */
 import Indicadorr from "@/components/comuns/Indicador.vue";
 import PesquisarVaga from "@/components/comuns/PesquisarVaga.vue";
-import Vagaa from "@/components/comuns/Vaga.vue";
+import ListaVagas from "@/components/comuns/ListaVagas.vue";
 
 /* Exportando o Seletor deste componente */
 export default {
@@ -73,11 +91,10 @@ export default {
   /* Declarando os componentes importados acima, através da
      propriedade/objeto literal "components", que configura
      este componente "Home" */
-  components: { PesquisarVaga, Indicadorr, Vagaa },
+  components: { PesquisarVaga, Indicadorr, ListaVagas },
 
   data: () => ({
     usuariosOnLineee: 0,
-    vagasss: [],
   }),
 
   methods: {
@@ -96,34 +113,6 @@ export default {
   },
 
   /* activated() Gancho(hook) executado quando o componente for "ativado/reativado". */
-  activated() {
-    /* Recuperando os registros do localStorage do navegador e usando
-    o JSON.parse() para converter a string em objeto, compativel com
-    o javaScript */
-    this.vagasss = JSON.parse(localStorage.getItem("vaggas"));
-  },
-
-  /* mounted() Gancho(hook) executado quando o componente for "montado". */
-  mounted() {
-    /* Escutando o evento personalizado "filtrarVagas"
-       do componente PesquisarVaga.vue */
-    /* Função de callback */
-    this.emitter.on('filtrarVagas', vagaa => {
-      /* Recuperando os registros do localStorage do navegador e usando
-    o JSON.parse() para converter a string em objeto, compativel com
-    o javaScript */
-      const vaggas = JSON.parse(localStorage.getItem("vaggas"));
-
-      /* Método filter() nativo do javascript
-      que trabalha sobre arrays.
-      true ou false: este método cria um novo array com todos
-      os elementos que passaram no teste implementado na função */
-      /* O método includes() determina se um array/objeto contém
-      um determinado elemento ou não, retornando true ou false,
-      respectivamente */
-      this.vagasss = vaggas.filter(reg => reg.titulo.toLowerCase().includes(vagaa.titulo.toLowerCase()))
-    })
-  }
 
   /* Relacioandos a ativação/desativação dos componentes */
   /* Com a tag <keep-alive></keep-alive> */
@@ -148,8 +137,6 @@ export default {
 };
 </script>
 
-
-/* Define o estilo específico, somente para este componente */
+<!-- Define o estilo específico, somente para este componente -->
 <!-- Add "scoped" attribute to limit CSS to this component only-->
-<style scoped>
-</style>
+<style scoped></style>
